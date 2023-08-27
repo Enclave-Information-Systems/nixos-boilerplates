@@ -7,7 +7,7 @@
       vfio.enable = true;
       imports =
         [ # Include the results of the hardware scan.
-        ../specialicastion/vfio/vfio.nix
+        ../specialisations/vfio/vfio.nix
       ];
     };
   };
