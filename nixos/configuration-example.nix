@@ -1,14 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running 'nixos-help').
-
 { config, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./Activated-Modules
+      ./custom.nix
     ];
 
   # Bootloader.
@@ -50,26 +46,6 @@
     description = "{username}";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
-  };
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  nix = {
-    settings.experimental-features = "nix-command";
-
-    #Enable Automatic Garbage Collection
-    gc.automatic = true;
-    gc.dates = "03:15";
-
-    #Enable Automatic Linting of Duplicated stores
-    settings.auto-optimise-store = true;
-  };
-
-  #Enable Automatic Updating
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = false;
   };
 
 
