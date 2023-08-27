@@ -1,5 +1,8 @@
-{config,...} {
+{config,...} :
 {
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   #Enable OpenGL
   hardware.opengl = {
     enable = true;
