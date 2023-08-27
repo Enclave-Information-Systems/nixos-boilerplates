@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./Activated-Modules
+      ./activated-modules
     ];
 
 
