@@ -6,10 +6,6 @@
       ./activated-modules
     ];
 
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   nix = {
     settings.experimental-features = "nix-command";
 
