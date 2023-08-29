@@ -3,6 +3,7 @@
   #Enable Flatpak
   services.flatpak.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.enable = true;
   #Automatically Update Flatpaks
   systemd.timers."update-flatpak" = {
     wantedBy = [ "timers.target" ];
