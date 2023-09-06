@@ -25,7 +25,6 @@
         "isolcpus=0-30"
         "nohz_full=0-30"
       ];
-      kernelPackages = pkgs.linuxPackages_zen;
     };
 
     hardware.opengl.enable = true;
@@ -35,12 +34,6 @@
     systemd.packages = [ pkgs.libvirt ];
     virtualisation.libvirtd.enable = true;
     virtualisation.libvirtd.qemu.swtpm.enable = true;
-
-    fileSystems."/mnt/SSD" =
-    { device = "/dev/disk/by-uuid/c0c4ce8a-76cc-496f-a772-da8e858aeffc";
-      fsType = "btrfs";
-      options = [ "defaults" "discard=async" "noatime" ];
-    };
 
     systemd.services.libvirtd.path = [ pkgs.bash pkgs.libvirt ];
 
