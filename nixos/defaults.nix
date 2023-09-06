@@ -1,0 +1,29 @@
+{ inputs, outputs, config, lib, ... }:
+
+{
+  nix = {
+    settings.experimental-features = "nix-command flakes";
+
+    #Enable Automatic Garbage Collection
+    gc.automatic = true;
+    gc.dates = "daily";
+
+    #Enable Automatic Linting of Duplicated stores
+    settings.auto-optimise-store = true;
+
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+  };
+
+  #Enable Automatic Updating
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+  };
+
+}
