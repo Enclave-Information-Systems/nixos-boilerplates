@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ librewolf ];
-  home.sessionVariables = {
-    # Enable manual pico-sdk management
-    PICO_SDK_PATH = /home/ryan/git/pico-sdk;
-  };
   # SessionPath and sessionVariables creates a hm-session file that must be sourced:
   # Beware, it puts it in .profile, not in the .bashrc!
   programs.bash = {
@@ -13,12 +8,6 @@
     initExtra = ''
       . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
     '';
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "ryan.mcgee";
-    userEmail = "ryan@enclaveis.com";
   };
 
   nixpkgs = {
