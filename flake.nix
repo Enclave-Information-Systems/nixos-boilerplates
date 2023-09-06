@@ -14,12 +14,10 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      # Change these variables
-      user = "username";
+      vars = import ./vars.nix;
+      user = vars.user;
       userHome = "/home/${user}";
-      hostName = "hostname";
-
-
+      hostName = vars.hostname;;
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
