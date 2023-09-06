@@ -1,4 +1,0 @@
-{
-  user = "username";
-  hostname = "hostname";
-}
