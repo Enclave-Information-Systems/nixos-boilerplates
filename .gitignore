@@ -1,4 +1,4 @@
-*result*
-./flake.lock
-./vars.nix
-./hardware-config.nix
+result
+flake.lock
+vars.nix
+hardware-config.nix
