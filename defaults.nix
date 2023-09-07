@@ -10,7 +10,7 @@ in
   environment.systemPackages = [ pkgs.git ];
 
   nix = {
-    settings.experimental-features = lib.mkDefault "nix-command";
+    settings.experimental-features = lib.mkDefault "nix-command flakes";
 
     #Enable Automatic Garbage Collection
     gc.automatic = lib.mkDefault true;
@@ -18,6 +18,7 @@ in
 
     #Enable Automatic Linting of Duplicated stores
     settings.auto-optimise-store = lib.mkDefault true;
+  };
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.${user} = lib.mkDefault {
@@ -25,7 +26,6 @@ in
     description = "${user}";
     extraGroups = [ "networkmanager" "wheel" "${user}"];
   };
-
 
   networking.hostName = lib.mkDefault vars.hostname;
   networking.networkmanager.enable = lib.mkDefault true;
