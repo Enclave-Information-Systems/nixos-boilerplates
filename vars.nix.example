@@ -1,7 +1,7 @@
 {
   # Don't forget to set a password with 'passwd'.
-  user = "username";
-  hostname = "hostname";
+  user = "nixos";
+  hostname = "nixos";
   tz = "America/Chicago";
   locale = "en_US.UTF-8";
 
