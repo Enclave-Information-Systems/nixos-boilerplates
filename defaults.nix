@@ -2,9 +2,10 @@
 let
   vars = import ./vars.nix;
   user = vars.user;
+  hostName = vars.hostname;
 in
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ./hosts/${hostName}];
 
   environment.systemPackages = [ pkgs.git ];
 
@@ -13,7 +14,7 @@ in
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
   nix = {
-    settings.experimental-features = lib.mkForce "nix-command flakes";
+    settings.experimental-features = lib.mkDefault "nix-command";
 
     #Enable Automatic Garbage Collection
     gc.automatic = lib.mkDefault true;
