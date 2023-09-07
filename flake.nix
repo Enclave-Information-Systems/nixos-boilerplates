@@ -17,7 +17,7 @@
       vars = import ./vars.nix;
       user = vars.user;
       userHome = "/home/${user}";
-      hostName = vars.hostname;;
+      hostName = vars.hostname;
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
