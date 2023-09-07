@@ -5,7 +5,7 @@ let
   hostName = vars.hostname;
 in
 {
-  imports = [ ./hardware-configuration.nix ./hosts/${hostName}];
+  imports = [ ./hardware-configuration.nix ./hosts/activated-modules}];
 
   environment.systemPackages = [ pkgs.git ];
 
