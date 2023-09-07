@@ -11,6 +11,10 @@
       # Enable the KDE Plasma Desktop Environment.
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
+
+      # Set Keyboard layout
+      layout = "us";
+      xkbVariant = "";
     };
     # Enable sound with pipewire.
     sound.enable = true;

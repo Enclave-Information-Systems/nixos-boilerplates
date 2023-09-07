@@ -43,12 +43,8 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs outputs; };
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [ ./defaults-hm.nix /hosts/${hostName} ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     };
 }
