@@ -1,1 +1,1 @@
-../modules/plasma.nix
+../nixos-modules/plasma.nix

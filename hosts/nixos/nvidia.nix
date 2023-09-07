@@ -1,1 +1,1 @@
-../modules/nvidia.nix
+../nixos-modules/nvidia.nix

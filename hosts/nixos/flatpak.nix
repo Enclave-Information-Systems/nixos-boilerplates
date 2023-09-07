@@ -1,1 +1,1 @@
-../modules/flatpak.nix
+../nixos-modules/flatpak.nix

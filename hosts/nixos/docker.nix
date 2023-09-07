@@ -1,1 +1,1 @@
-../modules/docker.nix
+../nixos-modules/docker.nix

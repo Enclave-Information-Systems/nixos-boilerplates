@@ -29,7 +29,6 @@
     in
     rec {
       nixosConfigurations = {
-        # FIXME replace with your hostname
         ${hostName} = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
@@ -46,7 +45,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ /defaults-hm.nix ];
+        modules = [ ./defaults-hm.nix /hosts/${hostName} ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
