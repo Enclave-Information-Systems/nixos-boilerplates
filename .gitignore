@@ -1,3 +1,2 @@
 *result*
-*vars.nix
-*flake.lock
+./flake.lock
