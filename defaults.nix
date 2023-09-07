@@ -4,15 +4,19 @@ let
   user = vars.user;
 in
 {
+  # Bootloader.
+  boot.loader.systemd-boot.enable = lib.mkDefault true;
+  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
+
   nix = {
-    settings.experimental-features = "nix-command flakes";
+    settings.experimental-features = lib.mkForce "nix-command flakes";
 
     #Enable Automatic Garbage Collection
-    gc.automatic = true;
-    gc.dates = "daily";
+    gc.automatic = lib.mkDefault true;
+    gc.dates = lib.mkDefault "daily";
 
     #Enable Automatic Linting of Duplicated stores
-    settings.auto-optimise-store = true;
+    settings.auto-optimise-store = lib.mkDefault true;
 
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -24,32 +28,33 @@ in
   };
 
   # Define a user account. Don't forget to set a password with 'passwd'.
-  users.users.${user} = lib.mkForce {
+  users.users.${user} = lib.mkDefault {
     isNormalUser = true;
     description = "${user}";
     extraGroups = [ "networkmanager" "wheel" "${user}"];
   };
 
 
-  networking.hostName = lib.mkForce vars.hostname;
-  time.timeZone = lib.mkForce vars.tz;
-  i18n.defaultLocale = lib.mkForce vars.locale;
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = lib.mkForce vars.locale;
-    LC_IDENTIFICATION = lib.mkForce vars.locale;
-    LC_MEASUREMENT = lib.mkForce vars.locale;
-    LC_MONETARY = lib.mkForce vars.locale;
-    LC_NAME = lib.mkForce vars.locale;
-    LC_NUMERIC = lib.mkForce vars.locale;
-    LC_PAPER = lib.mkForce vars.locale;
-    LC_TELEPHONE = lib.mkForce vars.locale;
-    LC_TIME = lib.mkForce vars.locale;
+  networking.hostName = lib.mkDefault vars.hostname;
+  time.timeZone = lib.mkDefault vars.tz;
+  i18n.defaultLocale = lib.mkDefault vars.locale;
+  i18n.extraLocaleSettings = lib.mkDefault {
+    LC_ADDRESS = vars.locale;
+    LC_IDENTIFICATION = vars.locale;
+    LC_MEASUREMENT = vars.locale;
+    LC_MONETARY = vars.locale;
+    LC_NAME = vars.locale;
+    LC_NUMERIC = vars.locale;
+    LC_PAPER = vars.locale;
+    LC_TELEPHONE = vars.locale;
+    LC_TIME = vars.locale;
   };
 
   #Enable Automatic Updating
-  system.autoUpgrade = {
+  system.autoUpgrade = lib.mkDefault {
     enable = true;
     allowReboot = false;
   };
 
+  system.stateVersion = lib.mkDefault vars.version;
 }
