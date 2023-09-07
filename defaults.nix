@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   vars = import ./vars.nix;
   user = vars.user;
@@ -8,10 +8,6 @@ in
   imports = [ ./hardware-configuration.nix ./hosts/${hostName}];
 
   environment.systemPackages = [ pkgs.git ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = lib.mkDefault true;
-  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
   nix = {
     settings.experimental-features = lib.mkDefault "nix-command";
@@ -25,7 +21,7 @@ in
 
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+#    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
