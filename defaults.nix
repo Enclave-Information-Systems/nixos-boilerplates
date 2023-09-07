@@ -1,10 +1,12 @@
-{ inputs, outputs, config, lib, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 let
   vars = import ./vars.nix;
   user = vars.user;
 in
 {
   imports = [ ./hardware-configuration.nix ];
+
+  environment.systemPackages = [ pkgs.git ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = lib.mkDefault true;
