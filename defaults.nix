@@ -37,6 +37,8 @@ in
 
 
   networking.hostName = lib.mkDefault vars.hostname;
+  networking.networkmanager.enable = lib.mkDefault true;
+
   time.timeZone = lib.mkDefault vars.tz;
   i18n.defaultLocale = lib.mkDefault vars.locale;
   i18n.extraLocaleSettings = lib.mkDefault {
