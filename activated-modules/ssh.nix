@@ -1,1 +1,1 @@
-../nixos-modules/ssh.nix
+../modules/nixos/ssh.nix
