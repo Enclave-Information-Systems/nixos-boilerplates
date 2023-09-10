@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let vars = import ../../vars.nix;
+let vars = import ../../vars.nix; in
 {
   # Home Assistant
   virtualisation.oci-containers.containers."huginn" = {
